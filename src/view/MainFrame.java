@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
     private TablePanel tablePanel;
 
     public MainFrame() {
-        super("Hello World!");
+        super("Phonebook Application");
 
         // Set Layout of Main Frame
         setLayout(new BorderLayout());
@@ -90,12 +90,12 @@ public class MainFrame extends JFrame {
         JMenuBar menuBar = new JMenuBar();
 
         JMenu fileMenu = new JMenu("File");
-        JMenuItem exportDataItem = new JMenuItem("Save...");
-        JMenuItem importDataItem = new JMenuItem("Open...");
+        JMenuItem saveDataItem = new JMenuItem("Save to File...");
+        JMenuItem openDataItem = new JMenuItem("Open from File...");
         JMenuItem exitItem = new JMenuItem("Exit");
 
-        fileMenu.add(exportDataItem);
-        fileMenu.add(importDataItem);
+        fileMenu.add(saveDataItem);
+        fileMenu.add(openDataItem);
         fileMenu.addSeparator();
         fileMenu.add(exitItem);
 
@@ -111,22 +111,10 @@ public class MainFrame extends JFrame {
         fileMenu.setMnemonic(KeyEvent.VK_F);
         exitItem.setMnemonic(KeyEvent.VK_X);
 
+        saveDataItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
         exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 
-        exportDataItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    controller.saveToFile(fileChooser.getSelectedFile());
-                } catch (IOException ex1) {
-                    JOptionPane.showMessageDialog(MainFrame.this,
-                            "Tidak dapat menyimpan data ke file!", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-        importDataItem.addActionListener(new ActionListener() {
+        openDataItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
@@ -139,6 +127,21 @@ public class MainFrame extends JFrame {
                                 JOptionPane.ERROR_MESSAGE);
                     }
                     System.out.println();
+                }
+            }
+        });
+
+        saveDataItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        controller.saveToFile(fileChooser.getSelectedFile());
+                    } catch (IOException ex1) {
+                        JOptionPane.showMessageDialog(MainFrame.this,
+                                "Tidak dapat menyimpan data ke file!", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });

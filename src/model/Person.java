@@ -13,7 +13,12 @@ import java.io.Serializable;
  */
 public class Person implements Serializable {
 
-    private static int count = 0;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7568745478585432226L;
+
+	private static int count = 0;
 
     private int id;
     private String name;
