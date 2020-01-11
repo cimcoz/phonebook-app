@@ -40,7 +40,6 @@ public class FormPanel extends JPanel {
     private FormListener formListener;
     private JList ageList;
     private JComboBox empBox;
-    private JCheckBox citizenCheck;
     private JTextField taxField;
     private JLabel taxLabel;
     private JRadioButton maleRadio;
@@ -88,14 +87,16 @@ public class FormPanel extends JPanel {
         taxLabel.setEnabled(false);
         taxField.setEnabled(false);
 
-        citizenCheck.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean isTicked = citizenCheck.isSelected();
-                taxLabel.setEnabled(isTicked);
-                taxField.setEnabled(isTicked);
-            }
-        });
+        
+        //////////////// Remove Temporary ///////////////////
+//        citizenCheck.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                boolean isTicked = citizenCheck.isSelected();
+//                taxLabel.setEnabled(isTicked);
+//                taxField.setEnabled(isTicked);
+//            }
+//        });
 
         // Set up ListBox
         DefaultListModel ageModel = new DefaultListModel();
