@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package app.model.phonebook;
 
 /**
  *
  * @author muchlas
  */
-public enum EmploymentCategory {
-    employed,
-    selfEmployed,
-    unEmployed,
-    other
+public enum AgeCategory {
+    child,
+    adult,
+    senior
 }

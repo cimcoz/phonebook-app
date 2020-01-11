@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package app.ui.phonebook;
 
 import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import model.Person;
+import app.model.phonebook.Person;
 
 /**
  *

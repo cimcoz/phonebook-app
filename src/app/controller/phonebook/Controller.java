@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package app.controller.phonebook;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import model.AgeCategory;
-import model.Database;
-import model.EmploymentCategory;
-import model.Gender;
-import model.Person;
-import view.FormEvent;
+import app.model.phonebook.AgeCategory;
+import app.model.phonebook.Database;
+import app.model.phonebook.EmploymentCategory;
+import app.model.phonebook.Gender;
+import app.model.phonebook.Person;
+import app.ui.phonebook.FormEvent;
 
 /**
  *

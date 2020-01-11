@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package app.ui.phonebook;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import model.Person;
+import app.model.phonebook.Person;
 
 /**
  *
