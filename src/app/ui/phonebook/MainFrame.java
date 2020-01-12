@@ -6,6 +6,7 @@
 package app.ui.phonebook;
 
 import app.controller.phonebook.Controller;
+import app.model.phonebook.Person;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -50,6 +51,11 @@ public class MainFrame extends JFrame {
         tablePanel.setPersonTableListener(new PersonTableListener() {
             public void rowDeleted(int row) {
                 controller.removePerson(row);
+            }
+
+            @Override
+            public void rowUpdated(int row, Person person) {
+                controller.updatePerson(row, person);
             }
         });
 

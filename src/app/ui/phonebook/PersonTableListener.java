@@ -5,6 +5,8 @@
  */
 package app.ui.phonebook;
 
+import app.model.phonebook.Person;
+
 /**
  *
  * @author muchlas
@@ -12,4 +14,5 @@ package app.ui.phonebook;
 public interface PersonTableListener {
 
     public void rowDeleted(int row);
+    public void rowUpdated(int row, Person person);
 }

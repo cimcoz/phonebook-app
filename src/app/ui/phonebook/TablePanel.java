@@ -73,6 +73,16 @@ public class TablePanel extends JPanel {
                 }
             }
         });
+        
+        updateItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int viewRow = table.getSelectedRow();
+                
+                System.out.println(viewRow);
+            }
+        });
+        
 
         form.add(searchLabel);
         form.add(searchField);

@@ -36,6 +36,10 @@ public class Database {
     public void removePerson(int index) {
         people.remove(index);
     }
+    
+    public void updatePerson(int index, Person person) {
+        people.set(index, person);
+    }
 
     public List<Person> getPeople() {
         return Collections.unmodifiableList(people);

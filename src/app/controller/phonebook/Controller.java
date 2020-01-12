@@ -29,6 +29,10 @@ public class Controller {
     public void removePerson(int index) {
         db.removePerson(index);
     }
+    
+    public void updatePerson(int index, Person person) {
+        db.updatePerson(index, person);
+    }
 
     public void addPerson(FormEvent ev) {
         String name = ev.getName();
