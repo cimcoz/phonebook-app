@@ -8,7 +8,7 @@ package app.controller.phonebook;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import app.model.phonebook.AgeCategory;
+import app.model.phonebook.RelationCategory;
 import app.model.phonebook.Database;
 import app.model.phonebook.EmploymentCategory;
 import app.model.phonebook.Gender;
@@ -32,20 +32,19 @@ public class Controller {
         String occupation = ev.getOccupation();
         int ageCatId = ev.getAgeCategory();
         String empCat = ev.getEmpCategory();
-        boolean isUs = ev.isUsCitizen();
         String taxId = ev.getTaxId();
         String gender = ev.getGender();
 
-        AgeCategory ageCategory = null;
+        RelationCategory relationCategory = null;
         switch (ageCatId) {
             case 0:
-                ageCategory = AgeCategory.child;
+                relationCategory = RelationCategory.family;
                 break;
             case 1:
-                ageCategory = AgeCategory.adult;
+                relationCategory = RelationCategory.friends;
                 break;
             case 2:
-                ageCategory = AgeCategory.senior;
+                relationCategory = RelationCategory.office;
                 break;
             default:
         }
@@ -70,7 +69,7 @@ public class Controller {
             genderCat = Gender.female;
         }
                 
-        Person person = new Person(name, occupation, ageCategory, empCategory, taxId, isUs, genderCat);
+        Person person = new Person(name, occupation, relationCategory, empCategory, taxId, genderCat);
 
         db.addPerson(person);
 

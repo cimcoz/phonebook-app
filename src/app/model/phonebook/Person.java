@@ -14,34 +14,39 @@ import java.io.Serializable;
 public class Person implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 7568745478585432226L;
+     *
+     */
+    private static final long serialVersionUID = 7568745478585432226L;
 
-	private static int count = 0;
+    private static int count = 0;
 
     private int id;
     private String name;
     private String occupation;
-    private AgeCategory ageCategory;
+    private RelationCategory relationCategory;
     private EmploymentCategory empCategory;
     private String taxId;
-    private boolean usCitizen;
     private Gender gender;
 
-    public Person(String name, String occupation, AgeCategory ageCategory,
-            EmploymentCategory employmentCategory, String taxId,
-            boolean usCitizen, Gender gender) {
+    public Person(String name, String occupation, RelationCategory relationCategory,
+            EmploymentCategory employmentCategory, String taxId, Gender gender) {
         this.name = name;
         this.occupation = occupation;
-        this.ageCategory = ageCategory;
+        this.relationCategory = relationCategory;
         this.empCategory = employmentCategory;
         this.taxId = taxId;
-        this.usCitizen = usCitizen;
         this.gender = gender;
 
         this.id = count;
         count++;
+    }
+
+    public Person(int id, String name, String occupation, RelationCategory relationCategory,
+            EmploymentCategory empCat, String taxId, Gender gender) {
+
+        this(name, occupation, relationCategory, empCat, taxId, gender);
+
+        this.id = id;
     }
 
     public int getId() {
@@ -68,12 +73,12 @@ public class Person implements Serializable {
         this.occupation = occupation;
     }
 
-    public AgeCategory getAgeCategory() {
-        return ageCategory;
+    public RelationCategory getRelationCategory() {
+        return relationCategory;
     }
 
-    public void setAgeCategory(AgeCategory ageCategory) {
-        this.ageCategory = ageCategory;
+    public void setAgeCategory(RelationCategory relationCategory) {
+        this.relationCategory = relationCategory;
     }
 
     public EmploymentCategory getEmpCategory() {
@@ -90,14 +95,6 @@ public class Person implements Serializable {
 
     public void setTaxId(String taxId) {
         this.taxId = taxId;
-    }
-
-    public boolean isUsCitizen() {
-        return usCitizen;
-    }
-
-    public void setUsCitizen(boolean usCitizen) {
-        this.usCitizen = usCitizen;
     }
 
     public Gender getGender() {

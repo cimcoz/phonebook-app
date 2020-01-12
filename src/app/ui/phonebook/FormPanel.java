@@ -34,11 +34,13 @@ public class FormPanel extends JPanel {
 
     private JLabel nameLabel;
     private JLabel occupationLabel;
+    private JLabel addressLabel;
     private JTextField nameField;
     private JTextField occupationField;
+    private JTextField addressField;
     private JButton okBtn;
     private FormListener formListener;
-    private JList ageList;
+    private JList relationList;
     private JComboBox empBox;
     private JTextField taxField;
     private JLabel taxLabel;
@@ -53,19 +55,20 @@ public class FormPanel extends JPanel {
 
         // Init Components
         nameLabel = new JLabel("Name: ");
-        occupationLabel = new JLabel("Occupation: ");
+        occupationLabel = new JLabel("Phone: ");
+        addressLabel = new JLabel("Address:");
         nameField = new JTextField(10);
         occupationField = new JTextField(10);
-        ageList = new JList();
+        addressField = new JTextField(10);
+        relationList = new JList();
         empBox = new JComboBox();
-        citizenCheck = new JCheckBox();
         taxField = new JTextField(10);
         taxLabel = new JLabel("Tax ID: ");
         okBtn = new JButton("OK");
-        
+
         // Set up mnemonics
         okBtn.setMnemonic(KeyEvent.VK_O);
-        
+
         nameLabel.setDisplayedMnemonic(KeyEvent.VK_N);
         nameLabel.setLabelFor(nameField);
 
@@ -87,7 +90,6 @@ public class FormPanel extends JPanel {
         taxLabel.setEnabled(false);
         taxField.setEnabled(false);
 
-        
         //////////////// Remove Temporary ///////////////////
 //        citizenCheck.addActionListener(new ActionListener() {
 //            @Override
@@ -97,17 +99,16 @@ public class FormPanel extends JPanel {
 //                taxField.setEnabled(isTicked);
 //            }
 //        });
-
         // Set up ListBox
-        DefaultListModel ageModel = new DefaultListModel();
-        ageModel.addElement(new AgeCategory(0, "Under 18"));
-        ageModel.addElement(new AgeCategory(1, "18 to 65"));
-        ageModel.addElement(new AgeCategory(2, "65 to over"));
-        ageList.setModel(ageModel);
+        DefaultListModel relationModel = new DefaultListModel();
+        relationModel.addElement(new RelationCategory(0, "Family"));
+        relationModel.addElement(new RelationCategory(1, "Friends"));
+        relationModel.addElement(new RelationCategory(2, "Office"));
+        relationList.setModel(relationModel);
 
-        ageList.setPreferredSize(new Dimension(110, 70));
-        ageList.setBorder(BorderFactory.createEtchedBorder());
-        ageList.setSelectedIndex(1);
+        relationList.setPreferredSize(new Dimension(110, 70));
+        relationList.setBorder(BorderFactory.createEtchedBorder());
+        relationList.setSelectedIndex(1);
 
         // Set up ComboBox
         DefaultComboBoxModel empModel = new DefaultComboBoxModel();
@@ -122,14 +123,13 @@ public class FormPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
                 String occupation = occupationField.getText();
-                AgeCategory ageCat = (AgeCategory) ageList.getSelectedValue();
+                RelationCategory relationCat = (RelationCategory) relationList.getSelectedValue();
                 String empCat = (String) empBox.getSelectedItem();
                 String taxId = taxField.getText();
-                boolean usCitizen = citizenCheck.isSelected();
 
                 String gender = genderGroup.getSelection().getActionCommand();
 
-                FormEvent ev = new FormEvent(this, name, occupation, ageCat.getId(), empCat, taxId, usCitizen, gender);
+                FormEvent ev = new FormEvent(this, name, occupation, relationCat.getId(), empCat, taxId, gender);
 
                 if (formListener != null) {
                     formListener.formEventOccured(ev);
@@ -139,8 +139,8 @@ public class FormPanel extends JPanel {
         });
 
         // Create Main Border
-        Border innerBorder = BorderFactory.createTitledBorder("Add Person");
-        Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+        Border innerBorder = BorderFactory.createTitledBorder("Add Person Information");
+        Border outerBorder = BorderFactory.createEmptyBorder(3, 3, 3, 3);
         setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
         layoutComponent();
@@ -193,13 +193,29 @@ public class FormPanel extends JPanel {
 
         gc.gridx = 0;
         gc.insets = new Insets(0, 0, 0, 5);
+        gc.anchor = GridBagConstraints.LINE_END;
+        add(addressLabel, gc);
+
+        gc.gridx = 1;
+        gc.insets = new Insets(0, 0, 0, 0);
+        gc.anchor = GridBagConstraints.LINE_START;
+        add(addressField, gc);
+
+        //////// Next Row ////////
+        gc.gridy++;
+
+        gc.weightx = 1;
+        gc.weighty = 0.2;
+
+        gc.gridx = 0;
+        gc.insets = new Insets(0, 0, 0, 5);
         gc.anchor = GridBagConstraints.FIRST_LINE_END;
-        add(new JLabel("Age: "), gc);
+        add(new JLabel("Relation: "), gc);
 
         gc.gridx = 1;
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.insets = new Insets(0, 0, 0, 0);
-        add(ageList, gc);
+        add(relationList, gc);
 
         //////// Next Row ////////
         gc.gridy++;
@@ -216,22 +232,6 @@ public class FormPanel extends JPanel {
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.insets = new Insets(0, 0, 0, 0);
         add(empBox, gc);
-
-        //////// Next Row ////////
-        gc.gridy++;
-
-        gc.weightx = 1;
-        gc.weighty = 0.2;
-
-        gc.gridx = 0;
-        gc.insets = new Insets(0, 0, 0, 5);
-        gc.anchor = GridBagConstraints.FIRST_LINE_END;
-        add(new JLabel("US Citizen: "), gc);
-
-        gc.gridx = 1;
-        gc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gc.insets = new Insets(0, 0, 0, 0);
-        add(citizenCheck, gc);
 
         //////// Next Row ////////
         gc.gridy++;
@@ -293,12 +293,12 @@ public class FormPanel extends JPanel {
     }
 }
 
-class AgeCategory {
+class RelationCategory {
 
     private int id;
     private String text;
 
-    public AgeCategory(int id, String text) {
+    public RelationCategory(int id, String text) {
         this.id = id;
         this.text = text;
     }

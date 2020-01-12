@@ -16,7 +16,7 @@ import app.model.phonebook.Person;
 public class PersonTableModel extends AbstractTableModel {
 
     private List<Person> db;
-    private String[] colNames = {"ID", "Name", "Occupation", "Age Category", "Employment Category", "US Citizen", "Tax ID"};
+    private String[] colNames = {"ID", "Name", "Phone", "Address", "Relation", "Gender"};
 
     public PersonTableModel() {
         
@@ -38,7 +38,7 @@ public class PersonTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 7;
+        return 6;
     }
 
     @Override
@@ -53,12 +53,10 @@ public class PersonTableModel extends AbstractTableModel {
             case 2:
                 return person.getOccupation();
             case 3:
-                return person.getAgeCategory();
+                return person.getRelationCategory();
             case 4:
                 return person.getEmpCategory();
             case 5:
-                return person.isUsCitizen();
-            case 6:
                 return person.getTaxId();
 
         }

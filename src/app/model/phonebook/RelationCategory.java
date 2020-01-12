@@ -9,8 +9,8 @@ package app.model.phonebook;
  *
  * @author muchlas
  */
-public enum AgeCategory {
-    child,
-    adult,
-    senior
+public enum RelationCategory {
+    family,
+    friends,
+    office
 }

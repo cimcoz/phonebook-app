@@ -28,7 +28,7 @@ public class PersonFileFilter extends FileFilter {
             return false;
         }
 
-        if (extension.equals("sql")) {
+        if (extension.equals("txt")) {
             return true;
         }
 
@@ -37,7 +37,7 @@ public class PersonFileFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-        return "Database file (*.sql)";
+        return "Text File (*.txt)";
     }
 
 }

@@ -30,7 +30,7 @@ import javax.swing.KeyStroke;
  */
 public class MainFrame extends JFrame {
 
-    private TextPanel textPanel;
+//    private TextPanel textPanel;
     private Toolbar toolbar;
     private FormPanel formPanel;
     private JFileChooser fileChooser;
@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
 
         // Init Component
         toolbar = new Toolbar();
-        textPanel = new TextPanel();
+//        textPanel = new TextPanel();
         formPanel = new FormPanel();
         tablePanel = new TablePanel();
 
@@ -59,12 +59,12 @@ public class MainFrame extends JFrame {
         setJMenuBar(createMenuBar());
 
         // Component Properties
-        toolbar.setStringListener(new StringListener() {
-            @Override
-            public void textEmitted(String text) {
-                textPanel.addText(text);
-            }
-        });
+//        toolbar.setStringListener(new StringListener() {
+//            @Override
+//            public void textEmitted(String text) {
+//                textPanel.addText(text);
+//            }
+//        });
 
         formPanel.setFormListener(new FormListener() {
             @Override
