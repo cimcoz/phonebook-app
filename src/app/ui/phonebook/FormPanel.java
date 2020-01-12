@@ -166,7 +166,6 @@ public class FormPanel extends JPanel {
         gc.anchor = GridBagConstraints.LINE_START;
         add(addressField, gc);
 
-
         //////// Next Row ////////
         gc.gridy++;
 
@@ -226,23 +225,3 @@ public class FormPanel extends JPanel {
         this.formListener = listener;
     }
 }
-
-//class RelationCategory {
-//
-//    private int id;
-//    private String text;
-//
-//    public RelationCategory(int id, String text) {
-//        this.id = id;
-//        this.text = text;
-//    }
-//
-//    public String toString() {
-//        return text;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//}

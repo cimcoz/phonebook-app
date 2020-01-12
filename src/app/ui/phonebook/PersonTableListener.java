@@ -10,6 +10,6 @@ package app.ui.phonebook;
  * @author muchlas
  */
 public interface PersonTableListener {
-    
+
     public void rowDeleted(int row);
 }

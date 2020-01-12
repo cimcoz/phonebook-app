@@ -25,7 +25,7 @@ public class Controller {
     public List<Person> getPeople() {
         return db.getPeople();
     }
-    
+
     public void removePerson(int index) {
         db.removePerson(index);
     }

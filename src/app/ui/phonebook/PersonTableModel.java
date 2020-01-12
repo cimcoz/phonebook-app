@@ -18,8 +18,7 @@ public class PersonTableModel extends AbstractTableModel {
     private List<Person> db;
     private String[] colNames = {"ID", "Name", "Phone", "Address", "Relation", "Gender"};
 
-    public PersonTableModel() {
-        
+    public PersonTableModel() { 
     }
 
     @Override

@@ -32,7 +32,7 @@ public class Database {
     public void addPerson(Person person) {
         people.add(person);
     }
-    
+
     public void removePerson(int index) {
         people.remove(index);
     }

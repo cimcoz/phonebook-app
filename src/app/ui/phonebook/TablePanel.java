@@ -23,20 +23,20 @@ import javax.swing.JPopupMenu;
  * @author muchlas
  */
 public class TablePanel extends JPanel {
-
+    
     private JTable table;
     private PersonTableModel tableModel;
     private JPopupMenu popup;
     private PersonTableListener personTableListener;
-
+    
     public TablePanel() {
         tableModel = new PersonTableModel();
         table = new JTable(tableModel);
         popup = new JPopupMenu();
-
+        
         JMenuItem removeItem = new JMenuItem("Delete row...");
         popup.add(removeItem);
-
+        
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -47,15 +47,15 @@ public class TablePanel extends JPanel {
                     popup.show(table, e.getX(), e.getY());
                 }
             }
-
+            
         });
-
+        
         removeItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int row = table.getSelectedRow();
                 
-                if(personTableListener != null) {
+                if (personTableListener != null) {
                     personTableListener.rowDeleted(row);
                     tableModel.fireTableRowsDeleted(row, row);
                 }
@@ -63,20 +63,20 @@ public class TablePanel extends JPanel {
         });
         
         setLayout(new BorderLayout());
-
+        
         add(new JScrollPane(table), BorderLayout.CENTER);
     }
-
+    
     public void setData(List<Person> db) {
         tableModel.setData(db);
     }
-
+    
     public void refreshData() {
         tableModel.fireTableDataChanged();
     }
-
+    
     public void setPersonTableListener(PersonTableListener listener) {
         this.personTableListener = listener;
     }
-
+    
 }
