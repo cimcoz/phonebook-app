@@ -30,6 +30,7 @@ public class MainFrame extends JFrame {
     private TextPanel textPanel;
     private Toolbar toolbar;
     private FormPanel formPanel;
+    private SearchPanel searchPanel;
     private JFileChooser fileChooser;
     private Controller controller;
     private TablePanel tablePanel;
@@ -44,6 +45,7 @@ public class MainFrame extends JFrame {
         toolbar = new Toolbar();
         textPanel = new TextPanel();
         formPanel = new FormPanel();
+        searchPanel = new SearchPanel();
         tablePanel = new TablePanel();
 
         controller = new Controller();
@@ -73,7 +75,7 @@ public class MainFrame extends JFrame {
 
         // Adding Components
         add(formPanel, BorderLayout.WEST);
-        add(toolbar, BorderLayout.NORTH);
+        add(searchPanel, BorderLayout.NORTH);
         add(tablePanel, BorderLayout.CENTER);
 
         // Layout Properties

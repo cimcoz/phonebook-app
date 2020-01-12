@@ -38,8 +38,8 @@ public class FormPanel extends JPanel {
     private JButton okBtn;
     private FormListener formListener;
     private JComboBox relationBox;
-    private JRadioButton maleRadio;
-    private JRadioButton femaleRadio;
+    private final JRadioButton maleRadio;
+    private final JRadioButton femaleRadio;
     private ButtonGroup genderGroup;
 
     public FormPanel() {
@@ -55,7 +55,7 @@ public class FormPanel extends JPanel {
         phoneField = new JTextField(10);
         addressField = new JTextField(10);
         relationBox = new JComboBox();
-        okBtn = new JButton("OK");
+        okBtn = new JButton("Save");
 
         // Set up mnemonics
         okBtn.setMnemonic(KeyEvent.VK_O);
