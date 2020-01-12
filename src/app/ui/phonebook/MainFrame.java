@@ -47,6 +47,11 @@ public class MainFrame extends JFrame {
         controller = new Controller();
 
         tablePanel.setData(controller.getPeople());
+        tablePanel.setPersonTableListener(new PersonTableListener() {
+            public void rowDeleted(int row) {
+                controller.removePerson(row);
+            }
+        });
 
         fileChooser = new JFileChooser();
         fileChooser.addChoosableFileFilter(new PersonFileFilter());
@@ -100,6 +105,7 @@ public class MainFrame extends JFrame {
         exitItem.setMnemonic(KeyEvent.VK_X);
 
         saveDataItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+        openDataItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
         exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 
         openDataItem.addActionListener(new ActionListener() {

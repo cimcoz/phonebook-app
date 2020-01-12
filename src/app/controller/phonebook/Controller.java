@@ -25,6 +25,10 @@ public class Controller {
     public List<Person> getPeople() {
         return db.getPeople();
     }
+    
+    public void removePerson(int index) {
+        db.removePerson(index);
+    }
 
     public void addPerson(FormEvent ev) {
         String name = ev.getName();
@@ -38,11 +42,8 @@ public class Controller {
             relationCategory = RelationCategory.family;
         } else if (relationCat.equals("friends")) {
             relationCategory = RelationCategory.friends;
-        } else if (relationCat.equals("work-office")) {
-            relationCategory = RelationCategory.office;
         } else {
-            relationCategory = RelationCategory.other;
-            System.err.println(relationCat);
+            relationCategory = RelationCategory.office;
         }
 
         Gender genderCat;

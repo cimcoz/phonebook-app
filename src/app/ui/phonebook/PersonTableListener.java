@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.model.phonebook;
+package app.ui.phonebook;
 
 /**
  *
  * @author muchlas
  */
-public enum RelationCategory {
-    family,
-    friends,
-    office
+public interface PersonTableListener {
+    
+    public void rowDeleted(int row);
 }

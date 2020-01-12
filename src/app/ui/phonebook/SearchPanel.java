@@ -5,16 +5,11 @@
  */
 package app.ui.phonebook;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
 /**
  *
@@ -27,16 +22,14 @@ public class SearchPanel extends JPanel {
     
     public SearchPanel() {
         setBorder(BorderFactory.createEtchedBorder());
-        
-        searchLabel = new JLabel("Search Contact: ");
-        searchField = new JTextField(20);
-        
+
+        searchLabel = new JLabel("Search by Name: ");
+        searchField = new JTextField(10);
+
         setLayout(new FlowLayout(FlowLayout.RIGHT));
         add(searchLabel);
         add(searchField);
-        
-        
+
         // Create Main Border
-     
     }
 }
