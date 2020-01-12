@@ -51,13 +51,13 @@ public class PersonTableModel extends AbstractTableModel {
             case 1:
                 return person.getName();
             case 2:
-                return person.getOccupation();
+                return person.getPhoneNumber();
             case 3:
-                return person.getRelationCategory();
+                return person.getAddress();
             case 4:
-                return person.getEmpCategory();
+                return person.getRelationCategory();
             case 5:
-                return person.getTaxId();
+                return person.getGender();
 
         }
 

@@ -14,36 +14,30 @@ import java.util.EventObject;
 public class FormEvent extends EventObject {
 
     private String name;
-    private String occupation;
-    private int ageCategory;
-    private String empCategory;
-    private String taxId;
+    private String phoneNumber;
+    private String address;
+    private String relationCategory;
     private String gender;
 
     public FormEvent(Object source) {
         super(source);
     }
 
-    public FormEvent(Object source, String name, String occupation, int ageCat, String empCat,
-            String taxId, String gender) {
+    public FormEvent(Object source, String name, String phoneNumber, String address, String relationCategory, 
+            String gender) {
         
         super(source);
 
         this.name = name;
-        this.occupation = occupation;
-        this.ageCategory = ageCat;
-        this.empCategory = empCat;
-        this.taxId = taxId;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.relationCategory = relationCategory;
         this.gender = gender;
 
     }
     
     public String getGender() {
         return gender;
-    }
-
-    public String getTaxId() {
-        return taxId;
     }
 
     public String getName() {
@@ -54,20 +48,24 @@ public class FormEvent extends EventObject {
         this.name = name;
     }
 
-    public String getOccupation() {
-        return occupation;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public int getAgeCategory() {
-        return ageCategory;
+    public String getAddress() {
+        return address;
     }
 
-    public String getEmpCategory() {
-        return empCategory;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
+    public String getRelationCategory() {
+        return relationCategory;
+    }
+  
 }

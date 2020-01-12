@@ -15,12 +15,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -33,17 +30,14 @@ import javax.swing.border.Border;
 public class FormPanel extends JPanel {
 
     private JLabel nameLabel;
-    private JLabel occupationLabel;
+    private JLabel phoneLabel;
     private JLabel addressLabel;
     private JTextField nameField;
-    private JTextField occupationField;
+    private JTextField phoneField;
     private JTextField addressField;
     private JButton okBtn;
     private FormListener formListener;
-    private JList relationList;
-    private JComboBox empBox;
-    private JTextField taxField;
-    private JLabel taxLabel;
+    private JComboBox relationBox;
     private JRadioButton maleRadio;
     private JRadioButton femaleRadio;
     private ButtonGroup genderGroup;
@@ -55,15 +49,12 @@ public class FormPanel extends JPanel {
 
         // Init Components
         nameLabel = new JLabel("Name: ");
-        occupationLabel = new JLabel("Phone: ");
-        addressLabel = new JLabel("Address:");
+        phoneLabel = new JLabel("Phone: ");
+        addressLabel = new JLabel("Address: ");
         nameField = new JTextField(10);
-        occupationField = new JTextField(10);
+        phoneField = new JTextField(10);
         addressField = new JTextField(10);
-        relationList = new JList();
-        empBox = new JComboBox();
-        taxField = new JTextField(10);
-        taxLabel = new JLabel("Tax ID: ");
+        relationBox = new JComboBox();
         okBtn = new JButton("OK");
 
         // Set up mnemonics
@@ -86,50 +77,24 @@ public class FormPanel extends JPanel {
         genderGroup.add(maleRadio);
         genderGroup.add(femaleRadio);
 
-        // Set up Tax ID
-        taxLabel.setEnabled(false);
-        taxField.setEnabled(false);
-
-        //////////////// Remove Temporary ///////////////////
-//        citizenCheck.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                boolean isTicked = citizenCheck.isSelected();
-//                taxLabel.setEnabled(isTicked);
-//                taxField.setEnabled(isTicked);
-//            }
-//        });
-        // Set up ListBox
-        DefaultListModel relationModel = new DefaultListModel();
-        relationModel.addElement(new RelationCategory(0, "Family"));
-        relationModel.addElement(new RelationCategory(1, "Friends"));
-        relationModel.addElement(new RelationCategory(2, "Office"));
-        relationList.setModel(relationModel);
-
-        relationList.setPreferredSize(new Dimension(110, 70));
-        relationList.setBorder(BorderFactory.createEtchedBorder());
-        relationList.setSelectedIndex(1);
-
         // Set up ComboBox
-        DefaultComboBoxModel empModel = new DefaultComboBoxModel();
-        empModel.addElement("employed");
-        empModel.addElement("self-employed");
-        empModel.addElement("unemployed");
-        empBox.setModel(empModel);
-        empBox.setSelectedIndex(0);
+        DefaultComboBoxModel relationModel = new DefaultComboBoxModel();
+        relationModel.addElement("family");
+        relationModel.addElement("friends");
+        relationModel.addElement("office-work");
+        relationBox.setModel(relationModel);
+        relationBox.setSelectedIndex(0);
 
         okBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
-                String occupation = occupationField.getText();
-                RelationCategory relationCat = (RelationCategory) relationList.getSelectedValue();
-                String empCat = (String) empBox.getSelectedItem();
-                String taxId = taxField.getText();
-
+                String phoneNumber = phoneField.getText();
+                String address = addressField.getText();
+                String relationCategory = (String) relationBox.getSelectedItem();
                 String gender = genderGroup.getSelection().getActionCommand();
 
-                FormEvent ev = new FormEvent(this, name, occupation, relationCat.getId(), empCat, taxId, gender);
+                FormEvent ev = new FormEvent(this, name, phoneNumber, address, relationCategory, gender);
 
                 if (formListener != null) {
                     formListener.formEventOccured(ev);
@@ -139,7 +104,7 @@ public class FormPanel extends JPanel {
         });
 
         // Create Main Border
-        Border innerBorder = BorderFactory.createTitledBorder("Add Person Information");
+        Border innerBorder = BorderFactory.createTitledBorder("Add Person's Contact");
         Border outerBorder = BorderFactory.createEmptyBorder(3, 3, 3, 3);
         setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
@@ -178,18 +143,18 @@ public class FormPanel extends JPanel {
         gc.gridx = 0;
         gc.insets = new Insets(0, 0, 0, 5);
         gc.anchor = GridBagConstraints.LINE_END;
-        add(occupationLabel, gc);
+        add(phoneLabel, gc);
 
         gc.gridx = 1;
         gc.insets = new Insets(0, 0, 0, 0);
         gc.anchor = GridBagConstraints.LINE_START;
-        add(occupationField, gc);
+        add(phoneField, gc);
 
         //////// Next Row ////////
         gc.gridy++;
 
         gc.weightx = 1;
-        gc.weighty = 0.2;
+        gc.weighty = 0.1;
 
         gc.gridx = 0;
         gc.insets = new Insets(0, 0, 0, 5);
@@ -201,11 +166,12 @@ public class FormPanel extends JPanel {
         gc.anchor = GridBagConstraints.LINE_START;
         add(addressField, gc);
 
+
         //////// Next Row ////////
         gc.gridy++;
 
         gc.weightx = 1;
-        gc.weighty = 0.2;
+        gc.weighty = 0.1;
 
         gc.gridx = 0;
         gc.insets = new Insets(0, 0, 0, 5);
@@ -215,39 +181,7 @@ public class FormPanel extends JPanel {
         gc.gridx = 1;
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.insets = new Insets(0, 0, 0, 0);
-        add(relationList, gc);
-
-        //////// Next Row ////////
-        gc.gridy++;
-
-        gc.weightx = 1;
-        gc.weighty = 0.2;
-
-        gc.gridx = 0;
-        gc.insets = new Insets(0, 0, 0, 5);
-        gc.anchor = GridBagConstraints.FIRST_LINE_END;
-        add(new JLabel("Employment: "), gc);
-
-        gc.gridx = 1;
-        gc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gc.insets = new Insets(0, 0, 0, 0);
-        add(empBox, gc);
-
-        //////// Next Row ////////
-        gc.gridy++;
-
-        gc.weightx = 1;
-        gc.weighty = 0.2;
-
-        gc.gridx = 0;
-        gc.insets = new Insets(0, 0, 0, 5);
-        gc.anchor = GridBagConstraints.FIRST_LINE_END;
-        add(taxLabel, gc);
-
-        gc.gridx = 1;
-        gc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gc.insets = new Insets(0, 0, 0, 0);
-        add(taxField, gc);
+        add(relationBox, gc);
 
         //////// Next Row ////////
         gc.gridy++;
@@ -293,22 +227,22 @@ public class FormPanel extends JPanel {
     }
 }
 
-class RelationCategory {
-
-    private int id;
-    private String text;
-
-    public RelationCategory(int id, String text) {
-        this.id = id;
-        this.text = text;
-    }
-
-    public String toString() {
-        return text;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-}
+//class RelationCategory {
+//
+//    private int id;
+//    private String text;
+//
+//    public RelationCategory(int id, String text) {
+//        this.id = id;
+//        this.text = text;
+//    }
+//
+//    public String toString() {
+//        return text;
+//    }
+//
+//    public int getId() {
+//        return id;
+//    }
+//
+//}

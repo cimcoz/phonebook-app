@@ -12,5 +12,6 @@ package app.model.phonebook;
 public enum RelationCategory {
     family,
     friends,
-    office
+    office,
+    other
 }

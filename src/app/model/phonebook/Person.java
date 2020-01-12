@@ -16,35 +16,32 @@ public class Person implements Serializable {
     /**
      *
      */
-    private static final long serialVersionUID = 7568745478585432226L;
 
     private static int count = 0;
 
     private int id;
     private String name;
-    private String occupation;
+    private String phoneNumber;
+    private String address;
     private RelationCategory relationCategory;
-    private EmploymentCategory empCategory;
-    private String taxId;
     private Gender gender;
 
-    public Person(String name, String occupation, RelationCategory relationCategory,
-            EmploymentCategory employmentCategory, String taxId, Gender gender) {
+    public Person(String name, String phoneNumber, String address, RelationCategory relationCategory, 
+            Gender gender) {
         this.name = name;
-        this.occupation = occupation;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
         this.relationCategory = relationCategory;
-        this.empCategory = employmentCategory;
-        this.taxId = taxId;
         this.gender = gender;
 
         this.id = count;
         count++;
     }
 
-    public Person(int id, String name, String occupation, RelationCategory relationCategory,
-            EmploymentCategory empCat, String taxId, Gender gender) {
+    public Person(int id, String name, String phoneNumber, String address, RelationCategory relationCategory, 
+            Gender gender) {
 
-        this(name, occupation, relationCategory, empCat, taxId, gender);
+        this(name, phoneNumber, address, relationCategory, gender);
 
         this.id = id;
     }
@@ -65,12 +62,20 @@ public class Person implements Serializable {
         this.name = name;
     }
 
-    public String getOccupation() {
-        return occupation;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public RelationCategory getRelationCategory() {
@@ -79,22 +84,6 @@ public class Person implements Serializable {
 
     public void setAgeCategory(RelationCategory relationCategory) {
         this.relationCategory = relationCategory;
-    }
-
-    public EmploymentCategory getEmpCategory() {
-        return empCategory;
-    }
-
-    public void setEmpCategory(EmploymentCategory empCategory) {
-        this.empCategory = empCategory;
-    }
-
-    public String getTaxId() {
-        return taxId;
-    }
-
-    public void setTaxId(String taxId) {
-        this.taxId = taxId;
     }
 
     public Gender getGender() {
