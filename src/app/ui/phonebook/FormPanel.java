@@ -12,9 +12,11 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -36,6 +38,7 @@ public class FormPanel extends JPanel {
     private JTextField phoneField;
     private JTextField addressField;
     private JButton okBtn;
+    private JButton resetBtn;
     private FormListener formListener;
     private JComboBox relationBox;
     private final JRadioButton maleRadio;
@@ -56,6 +59,7 @@ public class FormPanel extends JPanel {
         addressField = new JTextField(10);
         relationBox = new JComboBox();
         okBtn = new JButton("Save");
+        resetBtn = new JButton("Reset");
 
         // Set up mnemonics
         okBtn.setMnemonic(KeyEvent.VK_O);
@@ -85,6 +89,7 @@ public class FormPanel extends JPanel {
         relationBox.setModel(relationModel);
         relationBox.setSelectedIndex(0);
 
+        okBtn.setIcon(createIcon("/app/images/phonebook/Save16.gif"));
         okBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,13 +107,37 @@ public class FormPanel extends JPanel {
             }
 
         });
+        
+        resetBtn.setIcon(createIcon("/app/images/phonebook/Remove16.gif"));
+        resetBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nameField.setText("");
+                phoneField.setText("");
+                addressField.setText("");
+                relationBox.setSelectedIndex(0);
+                maleRadio.setSelected(true);
+            }
+        });
 
         // Create Main Border
         Border innerBorder = BorderFactory.createTitledBorder("Add Person's Contact");
         Border outerBorder = BorderFactory.createEmptyBorder(3, 3, 3, 3);
+
         setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
         layoutComponent();
+    }
+
+    private ImageIcon createIcon(String path) {
+        URL url = getClass().getResource(path);
+        ImageIcon icon = new ImageIcon(url);
+        
+        if(url == null) {
+            System.err.println("Unable to load image: " + path);
+        }
+        
+        return icon;
     }
 
     public void layoutComponent() {
@@ -213,12 +242,23 @@ public class FormPanel extends JPanel {
         gc.gridy++;
 
         gc.weightx = 1;
-        gc.weighty = 2.0;
+        gc.weighty = 0.1;
 
         gc.gridx = 1;
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
         gc.insets = new Insets(0, 0, 0, 0);
         add(okBtn, gc);
+        
+        //////// Next Row ////////
+        gc.gridy++;
+
+        gc.weightx = 1;
+        gc.weighty = 2.0;
+
+        gc.gridx = 1;
+        gc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gc.insets = new Insets(0, 0, 0, 0);
+        add(resetBtn, gc);
     }
 
     public void setFormListener(FormListener listener) {
