@@ -27,8 +27,6 @@ import javax.swing.KeyStroke;
  */
 public class MainFrame extends JFrame {
 
-    private TextPanel textPanel;
-    private Toolbar toolbar;
     private FormPanel formPanel;
     private SearchPanel searchPanel;
     private JFileChooser fileChooser;
@@ -42,8 +40,6 @@ public class MainFrame extends JFrame {
         setLayout(new BorderLayout());
 
         // Init Component
-        toolbar = new Toolbar();
-        textPanel = new TextPanel();
         formPanel = new FormPanel();
         searchPanel = new SearchPanel();
         tablePanel = new TablePanel();
@@ -58,13 +54,6 @@ public class MainFrame extends JFrame {
         setJMenuBar(createMenuBar());
 
         // Component Properties
-        toolbar.setStringListener(new StringListener() {
-            @Override
-            public void textEmitted(String text) {
-                textPanel.addText(text);
-            }
-        });
-
         formPanel.setFormListener(new FormListener() {
             @Override
             public void formEventOccured(FormEvent e) {
