@@ -242,7 +242,7 @@ public class FormPanel extends JPanel {
         gc.gridy++;
 
         gc.weightx = 1;
-        gc.weighty = 0.1;
+        gc.weighty = 0.05;
 
         gc.gridx = 1;
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
