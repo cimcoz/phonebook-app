@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
 
         // Adding Components
         add(formPanel, BorderLayout.WEST);
-        add(searchPanel, BorderLayout.NORTH);
+//        add(searchPanel, BorderLayout.NORTH);
         add(tablePanel, BorderLayout.CENTER);
 
         // Layout Properties
