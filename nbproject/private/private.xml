@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/app/ui/phonebook/FormPanel.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>44</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/model/Database.java</file>
-            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/model/Person.java</file>
-            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/view/App.java</file>
-            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/controller/Controller.java</file>
-            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/view/TablePanel.java</file>
-            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/view/MainFrame.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/controller/phonebook/Controller.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/model/phonebook/Database.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/ui/phonebook/PersonTableListener.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/ui/phonebook/PersonTableModel.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/ui/phonebook/MainFrame.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/ui/phonebook/FormListener.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/model/phonebook/Person.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/ui/phonebook/TablePanel.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/ui/phonebook/FormEvent.java</file>
+            <file>file:/home/muchlas/NetBeansProjects/phonebook-app/src/app/ui/phonebook/FormPanel.java</file>
         </group>
     </open-files>
 </project-private>

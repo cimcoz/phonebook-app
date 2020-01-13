@@ -86,22 +86,6 @@ public class TablePanel extends JPanel {
 
         form.add(searchLabel);
         form.add(searchField);
-//        searchField.getDocument().addDocumentListener(new DocumentListener() {
-//            @Override
-//            public void insertUpdate(DocumentEvent e) {
-//                filterData();
-//            }
-//
-//            @Override
-//            public void removeUpdate(DocumentEvent e) {
-//                filterData();
-//            }
-//
-//            @Override
-//            public void changedUpdate(DocumentEvent e) {
-//                filterData();
-//            }
-//        });
 
         setLayout(new BorderLayout());
 
